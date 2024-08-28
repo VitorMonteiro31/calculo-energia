@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calc.css">
+    <title>Calculadora</title>
+</head>
+<body>
+    <header>
+        <h1>EletroCalc</h1>
+        <a href="comousar.html">Como usar</a>
+        <a href="index.html">Home</a>
+        <a href="dicas.html">Dicas</a>
+    </header>
+    <main>
+        <div class="calculator-container">
+            <div class="calculator">
+                <h1>Calculadora de Consumo de Energia</h1>
+                <form id="energy-calculator">
+                    <label for="device">Escolha o Dispositivo:</label>
+                    <select id="device" onchange="populatePower()">
+                        <option value="0">Selecione um dispositivo</option>
+                        <option value="60">Lâmpada (60W)</option>
+                        <option value="150">Ventilador (150W)</option>
+                        <option value="2000">Ar Condicionado (2000W)</option>
+                        <option value="1000">Geladeira (1000W)</option>
+                        <option value="0">Outro</option>
+                    </select>
+                    
+                    <label for="other-device" id="other-device-label" style="display: none;">Nome do Dispositivo:</label>
+                    <input type="text" id="other-device" style="display: none;" placeholder="Digite o nome do dispositivo">
+
+                    <label for="power">Potência do Aparelho (em watts):</label>
+                    <input type="number" id="power" required>
+                    
+                    <label for="hours">Horas de Uso por Dia:</label>
+                    <input type="number" id="hours" required>
+
+                    <label for="days">Dias de Uso por Mês:</label>
+                    <input type="number" id="days" required>
+                    
+                    <label for="te">Tarifa de Energia (TE) em R$/kWh:</label>
+                    <input type="number" id="te" step="0.01" required>
+                    
+                    <button type="button" onclick="calculateConsumption()">Calcular</button>
+                </form>
+                <div id="result">
+                    <p id="total-consumption">Consumo Total: - kWh</p>
+                    <p id="total-cost">Custo Total: - R$</p>
+                    <div id="energy-flag"></div>
+                </div>
+            </div>
+            <div class="history">
+                <h2>Histórico de Cálculos</h2>
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Dispositivo</th>
+                            <th>Consumo (kWh)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Histórico será adicionado aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
